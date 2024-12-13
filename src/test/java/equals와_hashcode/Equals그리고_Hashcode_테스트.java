@@ -1,10 +1,9 @@
+package equals와_hashcode;
+
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.opentest4j.AssertionFailedError;
 
 import java.util.Comparator;
 import java.util.HashSet;
@@ -62,7 +61,7 @@ class AllHello
     String name;
 }
 
-public class EqualsAndHashcode
+public class Equals그리고_Hashcode_테스트
 {
     @Test
     public void defaultHello()
