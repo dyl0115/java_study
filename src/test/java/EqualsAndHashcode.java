@@ -6,6 +6,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.opentest4j.AssertionFailedError;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.TreeSet;
@@ -189,6 +190,28 @@ public class EqualsAndHashcode
         {
 
         }
+    }
+
+    @Test
+    public void Default클래스를_TreeSet에_넣어보자()
+    {
+        TreeSet<DefaultHello> set = new TreeSet<>(new Comparator<DefaultHello>()
+        {
+            @Override
+            public int compare(DefaultHello o1, DefaultHello o2)
+            {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+
+        DefaultHello m1 = new DefaultHello("hello");
+        DefaultHello m2 = new DefaultHello("hello");
+        set.add(m1);
+        set.add(m2);
+        assertThat(set.size()).isEqualTo(1);
+
+        //TreeSet은 Comparator 인터페이스로 비교하여 오름차순/내림차순으로 정렬해서 데이터를 넣어준다.
+        //따라서 equals(), hashcode()를 정의하지 않아도 된다.
     }
 }
 
