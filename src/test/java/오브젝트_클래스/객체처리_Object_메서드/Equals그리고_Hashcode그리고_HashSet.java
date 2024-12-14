@@ -12,56 +12,7 @@ import java.util.TreeSet;
 
 import static org.assertj.core.api.Assertions.*;
 
-// equals(), hashcode() 모두 오버라이딩하지 않은 클래스
-@AllArgsConstructor
-@Getter
-class DefaultHello
-{
-    String name;
-}
-
-// equals()만 오버라이딩한 클래스
-@AllArgsConstructor
-@Getter
-class EqualsHello
-{
-    String name;
-
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o) return true;
-        if (o == null) return false;
-        if (getClass() != o.getClass()) return false;
-        EqualsHello that = (EqualsHello) o;
-        return Objects.equals(name, that.name);
-    }
-}
-
-// hashcode()만 오버라이딩한 클래스
-@AllArgsConstructor
-@Getter
-class HashcodeHello
-{
-    String name;
-
-    @Override
-    public int hashCode()
-    {
-        return Objects.hashCode(name);
-    }
-}
-
-// equals(), hashcode() 모두 오버라이딩한 클래스
-@AllArgsConstructor
-@Getter
-@EqualsAndHashCode
-class AllHello
-{
-    String name;
-}
-
-public class Equals그리고_Hashcode
+public class Equals그리고_Hashcode그리고_HashSet
 {
     @Test
     public void defaultHello()
@@ -212,5 +163,56 @@ public class Equals그리고_Hashcode
         //TreeSet은 Comparator 인터페이스로 비교하여 오름차순/내림차순으로 정렬해서 데이터를 넣어준다.
         //따라서 equals(), hashcode()를 정의하지 않아도 된다.
     }
+
+
+    // equals(), hashcode() 모두 오버라이딩하지 않은 클래스
+    @AllArgsConstructor
+    @Getter
+    class DefaultHello
+    {
+        String name;
+    }
+
+    // equals()만 오버라이딩한 클래스
+    @AllArgsConstructor
+    @Getter
+    class EqualsHello
+    {
+        String name;
+
+        @Override
+        public boolean equals(Object o)
+        {
+            if (this == o) return true;
+            if (o == null) return false;
+            if (getClass() != o.getClass()) return false;
+            EqualsHello that = (EqualsHello) o;
+            return Objects.equals(name, that.name);
+        }
+    }
+
+    // hashcode()만 오버라이딩한 클래스
+    @AllArgsConstructor
+    @Getter
+    class HashcodeHello
+    {
+        String name;
+
+        @Override
+        public int hashCode()
+        {
+            return Objects.hashCode(name);
+        }
+    }
+
+    // equals(), hashcode() 모두 오버라이딩한 클래스
+    @AllArgsConstructor
+    @Getter
+    @EqualsAndHashCode
+    class AllHello
+    {
+        String name;
+    }
+
 }
 

@@ -19,6 +19,10 @@ public class ToString메서드
         //기본적으로 toString()은 메모리주소를 나타냄.
         Object o = new Object();
         assertThat(isMemoryAddress(o.toString())).isTrue();
+
+        //내부적으로 toString()은 해시코드를 사용함.
+        assertThat(o.toString()).isEqualTo(
+                o.getClass().getName() + '@' + Integer.toHexString(o.hashCode()));
     }
 
     @Test
@@ -51,6 +55,7 @@ public class ToString메서드
     @Test
     public void override_ToString()
     {
+        // toString()은 오버라이드해서 커스텀하게 쓸 수 있다.
         OverrideToStringClass o = new OverrideToStringClass();
         assertThat(isMemoryAddress(o.toString())).isFalse();
         assertThat(o.toString()).isEqualTo("오버라이드 된 ToString");
