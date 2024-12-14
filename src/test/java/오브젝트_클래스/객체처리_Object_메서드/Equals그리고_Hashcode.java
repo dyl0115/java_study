@@ -1,4 +1,4 @@
-package equals와_hashcode;
+package 오브젝트_클래스.객체처리_Object_메서드;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -61,7 +61,7 @@ class AllHello
     String name;
 }
 
-public class Equals그리고_Hashcode_테스트
+public class Equals그리고_Hashcode
 {
     @Test
     public void defaultHello()
