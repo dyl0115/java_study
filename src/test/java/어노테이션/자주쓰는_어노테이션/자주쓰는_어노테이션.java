@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class 자주쓰는_어노테이션
 {
     @Test
-    @SuppressWarnings("자식.떼쓰기 => Deprecated된거 알아요")
+    @SuppressWarnings("deprecation")
     public void test()
     {
         자식 자식 = new 자식();
