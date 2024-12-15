@@ -1,4 +1,4 @@
-package 자주쓰는Class;
+package SampleClass;
 
 import lombok.extern.slf4j.Slf4j;
 

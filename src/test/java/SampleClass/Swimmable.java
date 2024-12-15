@@ -1,4 +1,4 @@
-package 자주쓰는Class;
+package SampleClass;
 
 public interface Swimmable // can-do 명세서
 {

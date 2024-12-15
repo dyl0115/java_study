@@ -1,7 +1,7 @@
 package 오브젝트_클래스;
 
 import org.junit.jupiter.api.Test;
-import 자주쓰는Class.*;
+import SampleClass.*;
 
 import static org.assertj.core.api.Assertions.*;
 
