@@ -4,7 +4,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 
 @타입_어노테이션
-public class 어노테이션_Target_구경
+public class 어노테이션_Target_테스트
 {
     @필드_어노테이션
     private String name;
@@ -12,7 +12,7 @@ public class 어노테이션_Target_구경
     private static Integer age;
 
     @생성자_어노테이션
-    public 어노테이션_Target_구경(@매개변수_어노테이션 String name)
+    public 어노테이션_Target_테스트(@매개변수_어노테이션 String name)
     {
         this.name = name;
     }
