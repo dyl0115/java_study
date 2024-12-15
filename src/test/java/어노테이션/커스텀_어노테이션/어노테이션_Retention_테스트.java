@@ -1,7 +1,6 @@
-package 어노테이션;
+package 어노테이션.커스텀_어노테이션;
 
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.lang.annotation.Annotation;

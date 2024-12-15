@@ -1,6 +1,5 @@
-package 어노테이션;
+package 어노테이션.커스텀_어노테이션;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.lang.annotation.*;

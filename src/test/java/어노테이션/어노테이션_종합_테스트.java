@@ -49,7 +49,7 @@ public class 어노테이션_종합_테스트
 @Target({ElementType.TYPE, ElementType.METHOD})
 @interface 사람
 {
-    String name() default "";
+    String name();
 
     int age() default 1;
 
