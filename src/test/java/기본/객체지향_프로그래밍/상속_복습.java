@@ -3,7 +3,9 @@ package 기본.객체지향_프로그래밍;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class 상속
+import static org.assertj.core.api.Assertions.*;
+
+public class 상속_복습
 {
     // 1. 부모클래스의 기능에 새로운 기능을 추가한 클래스를 계속해서 확장할 수 있음.
     // 2. 부모클래스에 새로운 기능을 변경하면, 자식클래스도 자동 변경됨
@@ -72,6 +74,48 @@ public class 상속
     }
 
     @Nested
+    class 메서드는_오버라이딩된_메서드가_항상_우선권을_가진다
+    {
+        class Parent
+        {
+            String variable = "Parent";
+
+            public String method()
+            {
+                return "Parent";
+            }
+        }
+
+        class Child extends Parent
+        {
+            String variable = "Child";
+
+            public String method()
+            {
+                return "Child";
+            }
+        }
+
+        @Test
+        public void 테스트()
+        {
+            Parent parent = new Parent();
+            assertThat(parent.variable).isEqualTo("Parent");
+            assertThat(parent.method()).isEqualTo("Parent");
+
+            Child child = new Child();
+            assertThat(child.variable).isEqualTo("Child");
+            assertThat(child.method()).isEqualTo("Child");
+
+            Parent entity = new Child();
+            assertThat(entity.variable).isEqualTo("Parent");
+            // 이 부분이 중요하다!
+            assertThat(entity.method()).isEqualTo("Child");
+        }
+
+    }
+
+    @Nested
     class 자식클래스의_생성자는_반드시_super메서드를_포함해야_함
     {
         class Super
@@ -93,6 +137,7 @@ public class 상속
         }
     }
 
+
     @Nested
     class 자식클래스_생성시_부모클래스도_자동생성됨
     {
@@ -102,6 +147,7 @@ public class 상속
             {
                 System.out.println("ClassA 생성됨");
             }
+
         }
 
         static class ClassB extends ClassA
@@ -110,6 +156,7 @@ public class 상속
             {
                 System.out.println("ClassB 생성됨");
             }
+
         }
 
         static class ClassC extends ClassB
@@ -118,6 +165,7 @@ public class 상속
             {
                 System.out.println("ClassC 생성됨");
             }
+
         }
 
         @Test
@@ -125,6 +173,7 @@ public class 상속
         {
             ClassC classC = new ClassC();
         }
+
     }
 
     @Nested
@@ -133,8 +182,9 @@ public class 상속
         final class Super
         {
 
-        }
 
+        }
         // class Sub extends Super -> 오류
+
     }
 }
