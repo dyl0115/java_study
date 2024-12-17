@@ -7,7 +7,6 @@ import static org.assertj.core.api.Assertions.*;
 public class 매서드_매개변수
 {
     // 자바는 항상 변수 속 값을 복사해서 저장한다.
-
     public void changePrimitive(int x)
     {
         x = 20;
@@ -48,7 +47,7 @@ public class 매서드_매개변수
         // 뭐임???? Integer도 참조변수잖아???
         Integer x = 123456;
         changeInteger(x);
-        assertThat(x).isNotEqualTo(123456);
+        assertThat(x).isEqualTo(123456);
     }
 
     class Data
