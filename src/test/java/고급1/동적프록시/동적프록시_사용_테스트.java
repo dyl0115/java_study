@@ -1,4 +1,4 @@
-package 동적프록시;
+package 고급1.동적프록시;
 
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;

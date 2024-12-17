@@ -1,4 +1,4 @@
-package 기본.객체지향_프로그래밍;
+package 기본.절차지향_프로그래밍;
 
 import org.junit.jupiter.api.Nested;
 

@@ -1,11 +1,11 @@
-package 기본.객체지향_프로그래밍;
+package 기본.객체지향_프로그래밍.상속;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class 상속_복습
+public class 상속_개념
 {
     // 1. 부모클래스의 기능에 새로운 기능을 추가한 클래스를 계속해서 확장할 수 있음.
     // 2. 부모클래스에 새로운 기능을 변경하면, 자식클래스도 자동 변경됨
@@ -136,7 +136,6 @@ public class 상속_복습
             }
         }
     }
-
 
     @Nested
     class 자식클래스_생성시_부모클래스도_자동생성됨

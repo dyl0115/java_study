@@ -32,7 +32,6 @@ public class 인터페이스
 
     }
 
-
     interface Flyable
     {
         public void fly();

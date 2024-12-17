@@ -1,6 +1,5 @@
 package 기본.변수.기본형과_참조형_중요;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;

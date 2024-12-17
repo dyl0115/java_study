@@ -1,4 +1,4 @@
-package 어노테이션.커스텀_어노테이션;
+package 고급1.어노테이션.커스텀_어노테이션;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
