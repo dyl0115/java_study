@@ -2,7 +2,7 @@ package 기본.변수.기본형과_참조형_중요;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class 매서드_매개변수
 {
@@ -17,9 +17,9 @@ public class 매서드_매개변수
         data.value = 20;
     }
 
-    public void changeInteger(Integer x)
+    public void changeInteger(Integer x, Integer newX)
     {
-        x = 20;
+        x = newX;
     }
 
     @Test
@@ -44,9 +44,9 @@ public class 매서드_매개변수
     @Test
     public void Integer_매개변수_테스트()
     {
-        // 뭐임???? Integer도 참조변수잖아???
+        // ????????????????????
         Integer x = 123456;
-        changeInteger(x);
+        changeInteger(x, 20);
         assertThat(x).isEqualTo(123456);
     }
 
