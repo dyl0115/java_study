@@ -1,9 +1,9 @@
-package 중급1.오브젝트_클래스.객체처리_Object_메서드;
+package 중급1.object_클래스.객체처리_Object_메서드;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 public class ToString메서드

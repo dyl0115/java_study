@@ -1,4 +1,4 @@
-package 중급1.오브젝트_클래스.객체처리_Object_메서드;
+package 중급1.object_클래스.객체처리_Object_메서드;
 
 import lombok.AllArgsConstructor;
 import org.assertj.core.api.Assertions;

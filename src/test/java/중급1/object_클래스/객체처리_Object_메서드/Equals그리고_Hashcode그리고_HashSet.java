@@ -1,4 +1,4 @@
-package 중급1.오브젝트_클래스.객체처리_Object_메서드;
+package 중급1.object_클래스.객체처리_Object_메서드;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -10,7 +10,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.TreeSet;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 public class Equals그리고_Hashcode그리고_HashSet
 {

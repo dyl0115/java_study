@@ -1,4 +1,4 @@
-package 중급1.오브젝트_클래스;
+package 중급1.object_클래스;
 
 import org.junit.jupiter.api.Test;
 

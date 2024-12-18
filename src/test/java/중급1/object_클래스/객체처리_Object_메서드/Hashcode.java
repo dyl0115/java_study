@@ -1,11 +1,11 @@
-package 중급1.오브젝트_클래스.객체처리_Object_메서드;
+package 중급1.object_클래스.객체처리_Object_메서드;
 
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Hashcode
 {

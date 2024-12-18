@@ -1,10 +1,11 @@
 package 중급1.불변객체;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import java.util.HashMap;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * <h2>[정의] 불변(Immutable) 객체 </h2>
@@ -14,8 +15,15 @@ import static org.assertj.core.api.Assertions.*;
  *     <li><u>객체의 원자성을 확실하게 보장함. -> 멀티스레드 환경에서 안전하다.</u></li>
  *     <li><u>객체의 원자성을 확실하게 보장함. -> 캐싱 및 공유자원 환경에서도 안전하다.</u></li>
  * </ul>
+ * <h2>[정의] 가변(Mutable) 객체</h2>
+ * <ul>
+ *     <li>가변객체는 한 객체 및 쓰레드에서 혼자 사용하는 상황에서는 문제가 발생하지 않는다.</li>
+ *     <li>여러 클래스에서 동시에 사용하거나, 여러 쓰레드에서 함께 사용할 때 문제가 터진다.</li>
+ *     <li><u>한 객체에서 사용중인데, 다른 곳에서 수정을 할 경우 문제가 터지는 것이다.</u></li>
+ *     <li><u>불변객체는 수정자체를 막아서 이러한 문제를 원천봉쇄해준다.</u></li>
+ * </ul>
  */
-public class 불변객체는_어디에_쓸까
+public class 불변객체의_쓰임
 {
     @AllArgsConstructor
     @Data
@@ -108,7 +116,7 @@ public class 불변객체는_어디에_쓸까
         thread1.join();
         thread2.join();
 
-        //NOTE distance가 2, 혹은 20이 아닌 중간 결과 11이 리턴됨.
+        //PROBLEM distance가 2, 혹은 20이 아닌 중간 결과 11이 리턴됨.
         System.out.println(distance);
     }
 
@@ -172,4 +180,70 @@ public class 불변객체는_어디에_쓸까
         System.out.println(distance);
     }
 
+    /**
+     * <h2>[가변객체 문제2] 캐시 및 공유자원에서의 문제</h2>
+     * <p>가변객체는 의도치 않게 <u><b>외부에서 해당 객체가 변경될 여지</b></u>가 있다는 것이다.</p>
+     * <p>아래 문제 발생 과정을 이해해 보자.</p>
+     * <ol>
+     *     <li>객체1에서 가변객체 key를 생성</li>
+     *     <li>객체1에서 이를 HashMap에 (key, value)로 저장</li>
+     *     <li>외부 로직에서 해당 키를 수정함. </li>
+     *     <li>객체1에서 해당 키로 캐시에서 조회를 해보지만, 조회가 안됨.</li>
+     * </ol>
+     */
+    @Test
+    public void 캐시_및_공유자원에서의_문제()
+    {
+        @AllArgsConstructor
+        @EqualsAndHashCode
+        class MutableUser
+        {
+            String id;
+            String password;
+        }
+
+        HashMap<MutableUser, Integer> moneyCache = new HashMap<>();
+
+        MutableUser user1 = new MutableUser("id1", "password1");
+        moneyCache.put(user1, 10000);
+
+        //NOTE MutableKey는 가변객체라서 다른 외부로직에서 수정될 여지가 있고, 수정되었음.
+        user1.id = "id100";
+
+        //NOTE 개발자는 다른 외부로직에서 해당 key가 수정된 줄 모르고 그대로 사용.
+        Integer money1 = moneyCache.get(user1);
+
+        //PROBLEM 의도치않은 오동작 null이 반환됨
+        assertThat(money1).isNull();
+    }
+
+    /**
+     * <h2>[가변객체 문제해결2] 캐시 및 공유자원에서의 문제</h2>
+     * <p>문제의 원인은 외부에서 의도치 않게 key가 변경되어 HashSet에서 조회가 되지 않는것.</p>
+     * <p>key가 외부에서 변경되지 않도록 불변객체로 원천봉쇄한다.</p>
+     */
+    @Test
+    public void 캐시_및_공유자원에서의_문제_불변객체로_원인제거()
+    {
+        @Value
+        @AllArgsConstructor
+        @Getter
+        class ImmutableUser
+        {
+            final String id;
+            final String password;
+        }
+
+        HashMap<ImmutableUser, Integer> moneyCache = new HashMap<>();
+        ImmutableUser user1 = new ImmutableUser("user1", "password1");
+        moneyCache.put(user1, 10000);
+
+        //NOTE 외부 객체에서 해당 객체를 변경할 수 없음. 
+        //NOTE 외부 객체로부터 해당 객체를 보호함.
+        //user1.id = "user100";
+
+        //NOTE 개발자의 의도대로 정상작동함.
+        Integer money = moneyCache.get(user1);
+        assertThat(money).isEqualTo(10000);
+    }
 }
